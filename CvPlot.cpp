@@ -3791,6 +3791,10 @@ bool CvPlot::isValidDomainForAction(const CvUnit& unit) const
 		return (!isWater() || unit.canMoveAllTerrain());
 		break;
 
+	case DOMAIN_SPACE:
+		return true;
+		break;
+
 	default:
 		FAssert(false);
 		break;

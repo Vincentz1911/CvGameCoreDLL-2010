@@ -1661,6 +1661,10 @@ bool CvGameTextMgr::setCombatPlotHelp(CvWStringBuffer &szString, CvPlot* pPlot)
 	case DOMAIN_IMMOBILE:
 		break;
 
+	case DOMAIN_SPACE:
+		bValid = true;
+		break;
+
 	default:
 		FAssert(false);
 		break;

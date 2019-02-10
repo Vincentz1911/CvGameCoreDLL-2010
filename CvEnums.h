@@ -1259,6 +1259,7 @@ enum DomainTypes			// Exposed to Python
 	DOMAIN_AIR,
 	DOMAIN_LAND,
 	DOMAIN_IMMOBILE,
+	DOMAIN_SPACE,
 
 #ifdef _USRDLL
 	NUM_DOMAIN_TYPES

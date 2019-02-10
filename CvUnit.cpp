@@ -2658,6 +2658,10 @@ bool CvUnit::canMoveInto(const CvPlot* pPlot, bool bAttack, bool bDeclareWar, bo
 		return false;
 		break;
 
+	case DOMAIN_SPACE:
+		return true;
+		break;
+
 	default:
 		FAssert(false);
 		break;

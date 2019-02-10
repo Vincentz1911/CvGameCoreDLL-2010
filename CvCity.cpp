@@ -4131,7 +4131,7 @@ int CvCity::getOvercrowdingPercentAnger(int iExtra) const
 	int iAnger;
 
 	iAnger = 0;
-// Vincentz extra anger from growrh
+// Vincentz extra anger from growth
 	iOvercrowding = (getPopulation() * 2 + iExtra);
 
 	if (iOvercrowding > 0)
