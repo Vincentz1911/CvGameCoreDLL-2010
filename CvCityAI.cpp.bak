@@ -558,7 +558,7 @@ int CvCityAI::AI_specialistValue(SpecialistTypes eSpecialist, bool bAvoidGrowth,
 		}
 		iTempValue *= 100;
 		iTempValue /= GET_PLAYER(getOwnerINLINE()).AI_averageGreatPeopleMultiplier();
-
+		
 		iTempValue /= (1 + iEmphasisCount);
 		iValue += iTempValue;
 	}
@@ -3616,9 +3616,7 @@ int CvCityAI::AI_buildingValueThreshold(BuildingTypes eBuilding, int iFocusFlags
 					if (kBuilding.getSeaPlotYieldChange(YIELD_PRODUCTION) > 0)
 					{
 						int iNumWaterPlots = countNumWaterPlots();
-						int varNumPlots = getNumPlots(); // Mylon - Enhanced Sized Cities - Need to replace all instances of NUM_CITY_PLOTS
-//						if (!bIsLimitedWonder || (iNumWaterPlots > NUM_CITY_PLOTS / 2))
-                        if (!bIsLimitedWonder || (iNumWaterPlots > varNumPlots / 2))
+						if (!bIsLimitedWonder || (iNumWaterPlots > NUM_CITY_PLOTS / 2))
 						{
 					    	iTempValue += kBuilding.getSeaPlotYieldChange(YIELD_PRODUCTION) * iNumWaterPlots;
 						}
@@ -3646,7 +3644,7 @@ int CvCityAI::AI_buildingValueThreshold(BuildingTypes eBuilding, int iFocusFlags
 				{
 					iTempValue = ((kBuilding.getYieldModifier(YIELD_COMMERCE) * getBaseYieldRate(YIELD_COMMERCE)));
 					iTempValue *= kOwner.getCommercePercent(COMMERCE_GOLD);
-
+					
 					if (bFinancialTrouble)
 					{
 						iTempValue *= 2;
@@ -4802,8 +4800,7 @@ int CvCityAI::AI_totalBestBuildValue(CvArea* pArea)
 
 	iTotalValue = 0;
 
-	int varNumPlots = getNumPlots(); // Mylon - Enhanced Sized Cities - Need to replace all instances of NUM_CITY_PLOTS
-	for (iI = 0; iI < varNumPlots; iI++)
+	for (iI = 0; iI < NUM_CITY_PLOTS; iI++)
 	{
 		if (iI != CITY_HOME_PLOT)
 		{
@@ -4910,8 +4907,7 @@ int CvCityAI::AI_countBestBuilds(CvArea* pArea)
 
 	iCount = 0;
 
-	int varNumPlots = getNumPlots();  // Mylon - Enhanced Sized Cities - Need to replace all instances of NUM_CITY_PLOTS
-	for (iI = 0; iI < varNumPlots; iI++)
+	for (iI = 0; iI < NUM_CITY_PLOTS; iI++)
 	{
 		if (iI != CITY_HOME_PLOT)
 		{
@@ -4970,9 +4966,8 @@ void CvCityAI::AI_updateBestBuild()
 
 	int iHappyAdjust = 0;
 	int iHealthAdjust = 0;
-
-	int varNumPlots = getNumPlots(); // Mylon - Enhanced Sized Cities - Need to replace all instances of NUM_CITY_PLOTS
-	for (iI = 0; iI < varNumPlots; iI++)
+	
+	for (iI = 0; iI < NUM_CITY_PLOTS; iI++)
 	{
 		if (iI != CITY_HOME_PLOT)
 		{
@@ -5275,7 +5270,7 @@ void CvCityAI::AI_updateBestBuild()
     	iHealthAdjust += getBuildingHealth(getProductionBuilding());    	
     }
 
-	for (iI = 0; iI < varNumPlots; iI++)  // Mylon - Enhanced Sized Cities - Need to replace all instances of NUM_CITY_PLOTS
+	for (iI = 0; iI < NUM_CITY_PLOTS; iI++)
 	{
 		m_aiBestBuildValue[iI] = 0;
 		m_aeBestBuild[iI] = NO_BUILD;
@@ -5313,9 +5308,8 @@ void CvCityAI::AI_updateBestBuild()
 		int iBestUnworkedPlotValue = 0;
 		
 		int aiValues[NUM_CITY_PLOTS];
-
-		int varNumPlots = getNumPlots();  // Mylon - Enhanced Sized Cities - Need to replace all instances of NUM_CITY_PLOTS
-		for (iI = 0; iI < varNumPlots; iI++)
+		
+		for (iI = 0; iI < NUM_CITY_PLOTS; iI++)
 		{
 			if (iI != CITY_HOME_PLOT)
 			{
@@ -5371,8 +5365,7 @@ void CvCityAI::AI_updateBestBuild()
 		//Prune plots which are sub-par.
 		if (iBestUnworkedPlotValue > 0)
 		{
-		    int varNumPlots = getNumPlots();  // Mylon - Enhanced Sized Cities - Need to replace all instances of NUM_CITY_PLOTS
-			for (iI = 0; iI < varNumPlots; iI++)
+			for (iI = 0; iI < NUM_CITY_PLOTS; iI++)
 			{
 				if (iI != CITY_HOME_PLOT)
 				{
@@ -5904,8 +5897,7 @@ void CvCityAI::AI_doHurry(bool bForce)
 								int iFoodSurplus = 0;
 								CvPlot * pLoopPlot;
 
-								int varNumPlots = getNumPlots(); // Mylon - Enhanced Sized Cities - Need to replace all instances of NUM_CITY_PLOTS
-								for (iJ = 0; iJ < varNumPlots; iJ++)
+								for (iJ = 0; iJ < NUM_CITY_PLOTS; iJ++)
 								{
 									if (iJ != CITY_HOME_PLOT)
 									{
@@ -6014,8 +6006,7 @@ void CvCityAI::AI_doEmphasize()
 				int iHighHammerTotal = 0;
 				int iGoodFoodSink = 0;
 				int iFoodPerPop = GC.getFOOD_CONSUMPTION_PER_POPULATION();
-				int varNumPlots = getNumPlots(); // Mylon - Enhanced Sized Cities - Need to replace all instances of NUM_CITY_PLOTS
-				for (int iPlot = 0; iPlot < varNumPlots; iPlot++)
+				for (int iPlot = 0; iPlot < NUM_CITY_PLOTS; iPlot++)
 				{
 					CvPlot* pLoopPlot = plotCity(getX_INLINE(), getY_INLINE(), iPlot);
 					if (pLoopPlot != NULL && pLoopPlot->getWorkingCity() == this)
@@ -6777,8 +6768,7 @@ bool CvCityAI::AI_foodAvailable(int iExtra)
 		iBestValue = 0;
 		iBestPlot = CITY_HOME_PLOT;
 
-		int varNumPlots = getNumPlots();  // Mylon - Enhanced Sized Cities - Need to replace all instances of NUM_CITY_PLOTS
-		for (iI = 0; iI < varNumPlots; iI++)
+		for (iI = 0; iI < NUM_CITY_PLOTS; iI++)
 		{
 			if (abPlotAvailable[iI])
 			{
@@ -8635,8 +8625,7 @@ int CvCityAI::AI_countGoodTiles(bool bHealthy, bool bUnworkedOnly, int iThreshol
     int iCount;
     
     iCount = 0;
-    int varNumPlots = getNumPlots();  // Mylon - Enhanced Sized Cities - Need to replace all instances of NUM_CITY_PLOTS
-    for (iI = 0; iI < varNumPlots; iI++)
+    for (iI = 0; iI < NUM_CITY_PLOTS; iI++)
     {
         pLoopPlot = plotCity(getX_INLINE(),getY_INLINE(), iI);
         if ((iI != CITY_HOME_PLOT) && (pLoopPlot != NULL))
@@ -8819,8 +8808,7 @@ int CvCityAI::AI_buildingSpecialYieldChangeValue(BuildingTypes eBuilding, YieldT
     if (iYieldChange > 0)
     {
         int iWaterCount = 0;
-        int varNumPlots = getNumPlots(); // Mylon - Enhanced Sized Cities - Need to replace all instances of NUM_CITY_PLOTS
-        for (iI = 0; iI < varNumPlots; iI++)
+        for (iI = 0; iI < NUM_CITY_PLOTS; iI++)
         {
             if (iI != CITY_HOME_PLOT)
             {
@@ -8992,8 +8980,7 @@ int CvCityAI::AI_countNumBonuses(BonusTypes eBonus, bool bIncludeOurs, bool bInc
     BonusTypes eLoopBonus;
     int iI;
     int iCount = 0;
-    int varNumPlots = getNumPlots(); // Mylon - Enhanced Sized Cities - Need to replace all instances of NUM_CITY_PLOTS
-    for (iI = 0; iI < varNumPlots; iI++)
+    for (iI = 0; iI < NUM_CITY_PLOTS; iI++)
     {
         pLoopPlot = plotCity(getX_INLINE(), getY_INLINE(), iI);
         

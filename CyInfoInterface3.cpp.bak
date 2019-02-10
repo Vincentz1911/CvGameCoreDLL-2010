@@ -417,9 +417,6 @@ void CyInfoPythonInterface3()
 		.def("getCityDefenseModifier", &CvCultureLevelInfo::getCityDefenseModifier, "int ()")
 
 		.def("getSpeedThreshold", &CvCultureLevelInfo::getSpeedThreshold, "int ()")
-		.def("getCityRadius", &CvCultureLevelInfo::getCityRadius, "int ()") // Mylon - Enhanced Sized Cities - For interface use
-		.def("getCultureHappiness", &CvCultureLevelInfo::getCultureHappiness, "int ()") // Mylon - Enhanced Sized Cities - For interface use
-		.def("getCultureHealth", &CvCultureLevelInfo::getCultureHealth, "int ()") // Mylon - Enhanced Sized Cities - For interface use
 		;
 
 	python::class_<CvEraInfo, python::bases<CvInfoBase> >("CvEraInfo")

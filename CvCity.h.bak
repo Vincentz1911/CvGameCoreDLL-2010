@@ -29,9 +29,9 @@ public:
 	void kill(bool bUpdatePlotGroups);																								// Exposed to Python
 
 	void doTurn();
-// Mylon - Enhanced Sized Cities
+	// Mylon - Enhanced Sized Cities
 	int getNumPlots() const;
-// Mylon - Enhanced Sized Cities
+	// Mylon - Enhanced Sized Cities
 	bool isCitySelected();
 	DllExport bool canBeSelected() const;
 	DllExport void updateSelectedCity(bool bTestProduction);

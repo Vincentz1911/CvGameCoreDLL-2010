@@ -18596,11 +18596,6 @@ bool CvUpkeepInfo::read(CvXMLLoadUtility* pXml)
 
 CvCultureLevelInfo::CvCultureLevelInfo() :
 m_iCityDefenseModifier(0),
-// Mylon - Enhanced Size Cities
-m_iCityRadius(1),
-m_iCultureHappiness(0),
-m_iCultureHealth(0),
-// Mylon - Enhanced Size Cities
 m_paiSpeedThreshold(NULL)
 {
 }
@@ -18622,23 +18617,6 @@ int CvCultureLevelInfo::getSpeedThreshold(int i) const
 	return m_paiSpeedThreshold[i];
 }
 
-// Mylon - Enhanced Size Cities
-int CvCultureLevelInfo::getCityRadius() const
-{
-    return m_iCityRadius;
-}
-
-int CvCultureLevelInfo::getCultureHappiness() const
-{
-    return m_iCultureHappiness;
-}
-
-int CvCultureLevelInfo::getCultureHealth() const
-{
-    return m_iCultureHealth;
-}
-// Mylon - Enhanced Size Cities
-
 bool CvCultureLevelInfo::read(CvXMLLoadUtility* pXml)
 {
 	if (!CvInfoBase::read(pXml))
@@ -18647,14 +18625,6 @@ bool CvCultureLevelInfo::read(CvXMLLoadUtility* pXml)
 	}
 
 	pXml->GetChildXmlValByName(&m_iCityDefenseModifier, "iCityDefenseModifier");
-
-	// Mylon - Enhanced Size Cities
-	pXml->GetChildXmlValByName(&m_iCityRadius, "iCityRadius");
-
-	pXml->GetChildXmlValByName(&m_iCultureHappiness, "iCultureHappiness");
-
-	pXml->GetChildXmlValByName(&m_iCultureHealth, "iCultureHealth");
-	// Mylon - Enhanced Size Cities
 
 	pXml->SetVariableListTagPair(&m_paiSpeedThreshold, "SpeedThresholds", sizeof(GC.getGameSpeedInfo((GameSpeedTypes)0)), GC.getNumGameSpeedInfos());
 

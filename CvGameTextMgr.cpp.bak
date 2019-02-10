@@ -8494,16 +8494,6 @@ void CvGameTextMgr::setGoodHealthHelp(CvWStringBuffer &szBuffer, CvCity& city)
 			szBuffer.append(NEWLINE);
 		}
 
-//      Mylon - Enhanced Size Cities
-        iHealth = GC.getCultureLevelInfo(city.getCultureLevel()).getCultureHealth();
-		if (iHealth > 0)
-		{
-			szBuffer.append(gDLL->getText("TXT_KEY_MISC_GOOD_HEALTH_FROM_CULTURE", iHealth));
-			szBuffer.append(NEWLINE);
-		}
-//      Mylon - End
-
-
 		iHealth = GET_PLAYER(city.getOwnerINLINE()).getExtraHealth();
 		if (iHealth > 0)
 		{
@@ -8926,15 +8916,6 @@ void CvGameTextMgr::setHappyHelp(CvWStringBuffer &szBuffer, CvCity& city)
 			szBuffer.append(NEWLINE);
 		}
 
-//      Mylon - Enhanced Size Cities
-		iHappy = GC.getCultureLevelInfo(city.getCultureLevel()).getCultureHappiness();
-		if (iHappy > 0)
-		{
-			iTotalHappy += iHappy;
-			szBuffer.append(gDLL->getText("TXT_KEY_HAPPY_CULTURE", iHappy));
-			szBuffer.append(NEWLINE);
-		}
-//      Mylon - End
 		iHappy = (city.getExtraHappiness() + GET_PLAYER(city.getOwnerINLINE()).getExtraHappiness());
 		if (iHappy > 0)
 		{

@@ -802,8 +802,7 @@ bool CvUnitAI::AI_bestCityBuild(CvCity* pCity, CvPlot** ppBestPlot, BuildTypes* 
 	
 	for (int iPass = 0; iPass < 2; iPass++)
 	{
-		int varNumPlots = pCity->getNumPlots(); // Mylon - Enhanced Sized Cities - Need to replace all instances of NUM_CITY_PLOTS
-		for (iI = 0; iI < varNumPlots; iI++)
+		for (iI = 0; iI < NUM_CITY_PLOTS; iI++)
 		{
 			CvPlot* pLoopPlot = plotCity(pCity->getX_INLINE(), pCity->getY_INLINE(), iI);
 

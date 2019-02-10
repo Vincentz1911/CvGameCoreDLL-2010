@@ -5205,12 +5205,6 @@ public:
 
 	int getCityDefenseModifier() const;		//	Exposed to Python
 
-// Mylon Mega Mod
-	DllExport int getCityRadius() const;                // Exposed to python, hopefully
-	DllExport int getCultureHappiness() const;
-	DllExport int getCultureHealth() const;
-// Mylon Mega Mod End
-
 	int getSpeedThreshold(int i) const;		//	Exposed to Python
 
 	bool read(CvXMLLoadUtility* pXML);
@@ -5219,11 +5213,7 @@ public:
 protected:
 
 	int m_iCityDefenseModifier;
-// Mylon Mega Mod
-	int m_iCityRadius;
-    int m_iCultureHappiness;
-    int m_iCultureHealth;
-// Mylon Mega Mod End
+
 	int* m_paiSpeedThreshold;
 
 };
